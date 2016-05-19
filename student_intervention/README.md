@@ -66,8 +66,8 @@ Description:
 
 Complexity Analysis:
 
-- It has a space complexity of O(n) where n is the number of instances. 
-- The training time complexity of decision tree model is O(m*nlogn), where n is the number of the number of instances and m is the number of features([1]].
+- It has a space complexity of O(n) which is the worst case, and an average case of O(d^(1/2)*n*log(n)),where n is the number of instances and d is number of instances  
+- The training time complexity of decision tree model is O(m*nlogn), where n is the number of the number of instances and m is the number of features([1]).
 
 
 With the figures above, we should see that the expected training and prediction time for NBC should be less due to its linear nature.
@@ -79,7 +79,9 @@ Pros:
 
 Cons:
 
-- It is easy to get overfitted. And optimal algorithm could be NP-hard, which makes it very unstable on tree[2].
+- Decision-tree learners can create over-complex trees that do not generalise the data well. This is called overfitting. Mechanisms such as pruning (not currently supported), setting the minimum number of samples required at a leaf node or setting the maximum depth of the tree are necessary to avoid this problem.
+- Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. This problem is mitigated by using decision trees within an ensemble.
+- The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts. Consequently, practical decision-tree learning algorithms are based on heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node. Such algorithms cannot guarantee to return the globally optimal decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement.[2]
 
 Applications:
 Decision Tree could be used for financial analysis (especailly for loan decision), natural language processing[3].
@@ -102,19 +104,20 @@ Thus, for the entire training data, the decision tree will give a F1 score of 0.
 Description:
 
 Complexity:
-- A Random Forest has a space complexity of O(m^(1/2)*nlog n), where m is the number of features and n the number of elements in the dataset, under the assumption that a reasonably symmetric tree is built.
-- The training complexity is given as O(M*m^(1/2)*nlog n), where M denotes the number of trees. [4]
+- A Random Forest has a space complexity of O(m^(1/2)*nlog n), where m is the number of features and n the number of instances in the dataset, under the assumption that a reasonably symmetric tree is built.
+- For comutational complexity, random forest have two phases, in the buiding phase, the complexity will be O(M*(f)^(1/2)*N log N), where M denotes the number of trees,f means number of features and N means number of instances. \
+On the second phase it will be O(MN log N),which means that the overall complexity is dominated by the random forest construction. So overall complexity will be O(M*(f)^(1/2)*N log N)[5]
 
 Pros:
 
-- Random forest could deal with unbalanced data and handle missing values well. 
+- The Random Forests algorithm is a good algorithm to use for complex classification tasks. The main advantage of a Random Forests is that the model created can easily be interrupted. 
 
 Cons:
 
-- Random Forest may also have overfitting problem when there are too many missing values. 
+- The main limitation of the Random Forests algorithm is that a large number of trees may make the algorithm slow for real-time prediction.[5]
 
 Applications:
-It could be very useful in object detection and regression[5]. It will also be useful in bioinformatics[4].
+-It could be very useful in object detection and regression[6]. It will also be useful in bioinformatics[6].
 
 Reasons for Selection:
 
@@ -136,7 +139,7 @@ Description:
 
 - In machine learning, support vector machines are supervised learning models with associated learning algorithms that analyze data and recognize patterns. It is very good for 0/1 output learning problems.
 
-Complexity Analysis[6]:
+Complexity Analysis[7]:
 
 - SVM has a space complexity of O(n^2)
 - It has a training time of O(n^3) where n is the training dataset size.
@@ -151,7 +154,7 @@ Cons:
 - It has a high computational cost. Also SVM is also sensitive to noise.
 
 Applications:
-In industry it will be used for Gene Expression Data Classification; Text Categorization if time permits[6].
+In industry it will be used for Gene Expression Data Classification; Text Categorization if time permits[7].
 
 Reasons for Selection:
 
@@ -179,32 +182,35 @@ SVM and Random Forest model have similar F1 score for test set. However, Random 
 In conclusion, I would like to pick up SVM in balance with F1 score for test set and training time.
 
 
-Support Vector Machines will give a line based on traning data and try to divide the training data into two parts. The fitted line will find the maximum distance to the nearest point of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
+Support Vector Machines are based on the concept of decision lines that define decision boundaries. A decision line is one that separates between different sets of objects. In other words, given labeled training data as is in this supervised learning case, the algorithm outputs a clear divide that categorizes new examples. SVM chooses the best decision line or divide where the distance between that line and the nearest observations of differing classes are the largest.
+
+Furthermore, SVMs can employ the use of kernels to fit the data in a higher dimensional space to convert a linear classifier into a more complex nonlinear decision line of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
 
 The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel. ALso I keep f1 score as the metric.
 
-The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.783 for testing data, which shows an improve then section 4.
+The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.816 for testing data, which shows an improve then section 4.
 ```
-Successfully fit a model!
+
 SVC(C=100, cache_size=200, class_weight=None, coef0=0.0, degree=3,
   gamma=0.001, kernel='rbf', max_iter=-1, probability=False,
   random_state=None, shrinking=True, tol=0.001, verbose=False)
 Predicting labels using SVC...
 Done!
 Prediction time (secs): 0.004
-F1 score for training set: 0.866972477064
+F1 score for training set: 0.882461173815
 Predicting labels using SVC...
 Done!
-Prediction time (secs): 0.002
-F1 score for test set: 0.782608695652
+Prediction time (secs): 0.001
+F1 score for test set: 0.816326530612
 
 ## References:
-[1] Utgoff, P. E. (1989). Incremental induction of decision trees. Machine learning, 4(2), 161-186. 
-[2] scikit-learn documentation for decision tree, http://scikit-learn.org/stable/modules/tree.html
-[3] "Applications on decision tree model", http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html
-[4] "Overview of Random Forest Methodology and Practical  Guidance with Emphasis on Computational Biology and Bioinformatics",https://epub.ub.uni-muenchen.de/13766/1/TR.pdf 
-[5] Lecture of Nando de Freitas,https://www.youtube.com/watch?v=zFGPjRPwyFw
-[6] Lecture Note of Andrew NG, http://cs229.stanford.edu/notes/cs229-notes3.pdf
+[1] Utgoff, P. E. (1989). Incremental induction of decision trees. Machine learning, 4(2), 161-186. \
+[2] scikit-learn documentation for decision tree, http://scikit-learn.org/stable/modules/tree.html  \
+[3] "Applications on decision tree model", http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html \
+[4] http://www.nickgillian.com/wiki/pmwiki.php/GRT/RandomForests  \
+[5] "Random Forest Based Feature Induction",https://lirias.kuleuven.be/bitstream/123456789/316661/1/
+[6] Lecture of Nando de Freitas,https://www.youtube.com/watch?v=zFGPjRPwyFw \
+[7] Lecture Note of Andrew NG, http://cs229.stanford.edu/notes/cs229-notes3.pdf \
 ## Data
 
 The dataset used in this project is included as `student-data.csv`. This dataset has the following attributes:
