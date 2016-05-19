@@ -168,28 +168,35 @@ Reasons for Selection:
 
 ### 5. Choosing the Best Model
 
-From result of section 4, I would choose Support vector machine provides the best performance. It has a great balance between training time and F1 score, also it does not have a overfitting issue.
+From result of section 4, I would choose Support vector machine provides the best performance. 
+
+Overall, Decision tree have a great timing in traning time and extremely high f1 score for training set but very low f1 score for testing set. Random forest is slow in traning but has a good f1 score for testing. SVM also has a similar f1 score for test in compared with Random Forest, however, it is faster.
+ 
+F1 score for test set is very important because from F1 score for test set, we could see if there is an overfitting problem. Compare with three models, I would first exclude decision tree. It has a very obvious overfitting without having a good f1 score of testing model even though it is very fast.
+
+SVM and Random Forest model have similar F1 score for test set. However, Random Forest have a very high training set so that it is also suspected overfitted. Moreover, though SVM's testing f1 score is a slight lower, I would like to trade off with timing.
+
+In conclusion, I would like to pick up SVM in balance with F1 score for test set and training time.
+
 
 Support Vector Machines will give a line based on traning data and try to divide the training data into two parts. The fitted line will find the maximum distance to the nearest point of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
 
-The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel.
+The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel. ALso I keep f1 score as the metric.
 
-The below is a output from IPython note book. And F1 score is 0.768 for testing data.
+The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.783 for testing data, which shows an improve then section 4.
 ```
 Successfully fit a model!
-SVC(C=200, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+SVC(C=100, cache_size=200, class_weight=None, coef0=0.0, degree=3,
   gamma=0.001, kernel='rbf', max_iter=-1, probability=False,
   random_state=None, shrinking=True, tol=0.001, verbose=False)
 Predicting labels using SVC...
 Done!
+Prediction time (secs): 0.004
+F1 score for training set: 0.866972477064
 Predicting labels using SVC...
 Done!
-Prediction time (secs): 0.005
-F1 score for training set: 0.884875846501
-Predicting labels using SVC...
-Done!
-Prediction time (secs): 0.001
-F1 score for test set: 0.768115942029
+Prediction time (secs): 0.002
+F1 score for test set: 0.782608695652
 
 ## References:
 [1] Utgoff, P. E. (1989). Incremental induction of decision trees. Machine learning, 4(2), 161-186. 
