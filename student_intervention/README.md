@@ -67,18 +67,22 @@ Description:
 Complexity Analysis:
 
 - It has a space complexity of O(n) where n is the number of instances. 
-- The training time complexity of decision tree model is O(m*nlogn), where n is the number of the number of instances and m is the number of features.
+- The training time complexity of decision tree model is O(m*nlogn), where n is the number of the number of instances and m is the number of features([1]].
+
 
 With the figures above, we should see that the expected training and prediction time for NBC should be less due to its linear nature.
 
 Pros:
 
-- It is simple to understand and to interpret. Trees can be visualised.
+- It is simple to understand and to interpret. Trees can be visualised[2].
 
 
 Cons:
 
-- It is easy to get overfitted. And optimal algorithm could be NP-hard, which makes it very unstable.
+- It is easy to get overfitted. And optimal algorithm could be NP-hard, which makes it very unstable on tree[2].
+
+Applications:
+Decision Tree could be used for financial analysis (especailly for loan decision), natural language processing[3].
 
 Reasons for Selection:
 
@@ -97,8 +101,9 @@ Thus, for the entire training data, the decision tree will give a F1 score of 0.
 
 Description:
 
+Complexity:
 - A Random Forest has a space complexity of O(m^(1/2)*nlog n), where m is the number of features and n the number of elements in the dataset, under the assumption that a reasonably symmetric tree is built.
-- The training complexity is given as O(M*m^(1/2)*nlog n), where M denotes the number of trees. 
+- The training complexity is given as O(M*m^(1/2)*nlog n), where M denotes the number of trees. [4]
 
 Pros:
 
@@ -107,6 +112,9 @@ Pros:
 Cons:
 
 - Random Forest may also have overfitting problem when there are too many missing values. 
+
+Applications:
+It could be very useful in object detection and regression[5]. It will also be useful in bioinformatics[4].
 
 Reasons for Selection:
 
@@ -128,7 +136,7 @@ Description:
 
 - In machine learning, support vector machines are supervised learning models with associated learning algorithms that analyze data and recognize patterns. It is very good for 0/1 output learning problems.
 
-Complexity Analysis:
+Complexity Analysis[6]:
 
 - SVM has a space complexity of O(n^2)
 - It has a training time of O(n^3) where n is the training dataset size.
@@ -141,6 +149,9 @@ Pros:
 Cons:
 
 - It has a high computational cost. Also SVM is also sensitive to noise.
+
+Applications:
+In industry it will be used for Gene Expression Data Classification; Text Categorization if time permits[6].
 
 Reasons for Selection:
 
@@ -180,6 +191,13 @@ Done!
 Prediction time (secs): 0.001
 F1 score for test set: 0.768115942029
 
+## References:
+[1] Utgoff, P. E. (1989). Incremental induction of decision trees. Machine learning, 4(2), 161-186. 
+[2] scikit-learn documentation for decision tree, http://scikit-learn.org/stable/modules/tree.html
+[3] "Applications on decision tree model", http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html
+[4] "Overview of Random Forest Methodology and Practical  Guidance with Emphasis on Computational Biology and Bioinformatics",https://epub.ub.uni-muenchen.de/13766/1/TR.pdf 
+[5] Lecture of Nando de Freitas,https://www.youtube.com/watch?v=zFGPjRPwyFw
+[6] Lecture Note of Andrew NG, http://cs229.stanford.edu/notes/cs229-notes3.pdf
 ## Data
 
 The dataset used in this project is included as `student-data.csv`. This dataset has the following attributes:
@@ -215,3 +233,4 @@ The dataset used in this project is included as `student-data.csv`. This dataset
 - `health` ? current health status (numeric: from 1 - very bad to 5 - very good)
 - `absences` ? number of school absences (numeric: from 0 to 93)
 - `passed` ? did the student pass the final exam (binary: yes or no)
+
