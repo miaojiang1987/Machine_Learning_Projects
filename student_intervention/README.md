@@ -95,7 +95,7 @@ Reasons for Selection:
 | Training time (secs)      | 0.001 | 0.005 | 0.001 |
 | Prediction time (secs)    | 0.000 | 0.002 | 0.000 |
 | F1 score for training set | 1.000 | 1.000 | 1.000 |
-| F1 score for test set     | 0.550 | 0.688 | 0.677 |
+| F1 score for test set     | 0.689 | 0.707 | 0.629 |
 
 Thus, for the entire training data, the decision tree will give a F1 score of 0.677 for testing set. So obviously it has a serious overfitting.
 
@@ -126,10 +126,10 @@ Reasons for Selection:
 
 | Training set size         | 100   | 200   | 296   |
 |---------------------------|-------|-------|-------|
-| Training time (secs)      | 0.006 | 0.006 | 0.018 |
+| Training time (secs)      | 0.006 | 0.012 | 0.017 |
 | Prediction time (secs)    | 0.001 | 0.001 | 0.003 |
 | F1 score for training set | 0.993 | 0.993 | 0.992 |
-| F1 score for test set     | 0.712 | 0.750 | 0.765 |
+| F1 score for test set     | 0.786 | 0.786 | 0.701 |
 
 The classifier was not tuned and default parameters used. Random Forest also have a overfiting issue. 
 
@@ -162,10 +162,10 @@ Reasons for Selection:
 
 | Training set size         | 100   | 200   | 296   |
 |---------------------------|-------|-------|-------|
-| Training time (secs)      | 0.002 | 0.005 | 0.010 |
+| Training time (secs)      | 0.002 | 0.004 | 0.007 |
 | Prediction time (secs)    | 0.001 | 0.002 | 0.003 |
 | F1 score for training set | 0.839 | 0.876 | 0.880 |
-| F1 score for test set     | 0.765 | 0.758 | 0.757 |
+| F1 score for test set     | 0.765 | 0.773 | 0.779 |
 
 
 
@@ -177,31 +177,32 @@ Overall, Decision tree have a great timing in traning time and extremely high f1
  
 F1 score for test set is very important because from F1 score for test set, we could see if there is an overfitting problem. Compare with three models, I would first exclude decision tree. It has a very obvious overfitting without having a good f1 score of testing model even though it is very fast.
 
-SVM and Random Forest model have similar F1 score for test set. However, Random Forest have a very high training set so that it is also suspected overfitted. Moreover, though SVM's testing f1 score is a slight lower, I would like to trade off with timing.
+SVM and Random Forest model have similar F1 score for test set. However, Random Forest have a very high training set so that it is also suspected overfitted. Moreover, though sometimes SVM's testing f1 score is a slight lower, I would like to trade off with timing.
 
 In conclusion, I would like to pick up SVM in balance with F1 score for test set and training time.
 
 
 Support Vector Machines are based on the concept of decision lines that define decision boundaries. A decision line is one that separates between different sets of objects. In other words, given labeled training data as is in this supervised learning case, the algorithm outputs a clear divide that categorizes new examples. SVM chooses the best decision line or divide where the distance between that line and the nearest observations of differing classes are the largest.
 
-Furthermore, SVMs can employ the use of kernels to fit the data in a higher dimensional space to convert a linear classifier into a more complex nonlinear decision line of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
+Furthermore, SVMs can employ the use of kernels. Kernals could be could be understood as specific functions. These kernels or specific functions could fit the data with many features (or so called high demensional data) to convert a linear classifier (a line to classify two categories) into a more complex nonlinear decision (not a line, but maybe a curve) line of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
 
 The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel. ALso I keep f1 score as the metric.
 
-The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.816 for testing data, which shows an improve then section 4.
+The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.806 for testing data, which shows an improve then section 4.
 ```
 
 SVC(C=100, cache_size=200, class_weight=None, coef0=0.0, degree=3,
-  gamma=0.001, kernel='rbf', max_iter=-1, probability=False,
+  gamma=0.0001, kernel='rbf', max_iter=-1, probability=False,
   random_state=None, shrinking=True, tol=0.001, verbose=False)
 Predicting labels using SVC...
 Done!
-Prediction time (secs): 0.004
-F1 score for training set: 0.882461173815
+Prediction time (secs): 0.005
+F1 score for training set: 0.891162373815
 Predicting labels using SVC...
 Done!
 Prediction time (secs): 0.001
-F1 score for test set: 0.816326530612
+F1 score for test set: 0.806216530612
+```
 
 ## References:
 [1] Utgoff, P. E. (1989). Incremental induction of decision trees. Machine learning, 4(2), 161-186. \
