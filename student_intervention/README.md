@@ -186,7 +186,7 @@ Support Vector Machines are based on the concept of decision lines that define d
 
 Furthermore, SVMs can employ the use of kernels. Kernals could be could be understood as specific functions. These kernels or specific functions could fit the data with many features (or so called high demensional data) to convert a linear classifier (a line to classify two categories) into a more complex nonlinear decision (not a line, but maybe a curve) line of both sizes. In this speicic case, the fitted line will predict if a student will graduate or not. Then the line will try to draw a boundary between them. 
 
-The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel. ALso I keep f1 score as the metric.
+The chosen SVM model was tuned using Grid Search due to the size of data. Also, in such a case where the data is unbalanced, so I would choose F1 for metric in GridSearch. The parameters optimized were `gamma`,`C` and `tolerance`. And I choose rbf as the kernel. Also I keep f1 score as the metric.
 
 The below is a output from IPython note book which shows the most optimal parameters for SVM. And F1 score is 0.806 for testing data, which shows an improve then section 4.
 ```
@@ -209,9 +209,9 @@ F1 score for test set: 0.806216530612
 [2] scikit-learn documentation for decision tree, http://scikit-learn.org/stable/modules/tree.html  \
 [3] "Applications on decision tree model", http://www.cbcb.umd.edu/~salzberg/docs/murthy_thesis/survey/node32.html \
 [4] http://www.nickgillian.com/wiki/pmwiki.php/GRT/RandomForests  \
-[5] "Random Forest Based Feature Induction",https://lirias.kuleuven.be/bitstream/123456789/316661/1/
+[5] "Random Forest Based Feature Induction",https://lirias.kuleuven.be/bitstream/123456789/316661/1/ \
 [6] Lecture of Nando de Freitas,https://www.youtube.com/watch?v=zFGPjRPwyFw \
-[7] Lecture Note of Andrew NG, http://cs229.stanford.edu/notes/cs229-notes3.pdf \
+[7] Lecture Note of Andrew NG, http://cs229.stanford.edu/notes/cs229-notes3.pdf 
 ## Data
 
 The dataset used in this project is included as `student-data.csv`. This dataset has the following attributes:
