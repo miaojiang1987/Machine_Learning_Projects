@@ -496,7 +496,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Answer: 
 The first sample shows has buy a fresh, gocery and  a little more than 50% of all the customers, above 75 percentile of milk, around 75% of delicatessen's. Though it bought double the median of detergents paper but only a half of 75 percent of this feature. For frozen, this customer's feature is below the 25 percent. From this pattern, we could see this customer like a small cafe.</p>
-<p>The second customer is a very buyer for grocery,frozen,delicateseen and detergents paper (all above 75%). From here, I guess it may be a resturant since the detergents paper's amount is relatively higher than the first sample. Consider it has a more than median's fresh (more than 50% but smaller than 75%), I could see this customer maybe a small distributer or a resturnat.</p>
+<p>The second customer is a very buyer for grocery,frozen,delicateseen and detergents paper (all above 75%). From here, I guess it may be a resturant since the detergents paper's amount is relatively higher than the first sample. Consider it has a more than median's fresh (more than 50% but smaller than 75%), I could see this customer maybe a small distributer or a big resturnat.</p>
 <p>The third customer want excessive amount of grocery,milk,frozen and dtergents paper. So I guess it should be a large resturnat. Consider the amount of milk frozen and grocery (all double the 75%), it should be a large one. Consider its amount on fresh (less than 25%) and delicatessen (less than median), it is a big retailor like walmart or cub food.</p>
 
 </div>
@@ -7783,8 +7783,8 @@ AAAoPAIfAAAAAIVH4AMAAACg8Ah8AAAAABQegQ8AAACAwvv/AT0HN60ud0MxAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Answer: It seems like segment 0 have a high tendancy that will by a lot of milk,gorcery,frozen, detergents_paper (above than 75 percentile) but less fresh and delicatessen. So we could see that segnment 1 are more likely as a retailor (they don't need to sell much fresh and delcatessen).</p>
-<p>For segment 1, it has relatively more fresh (more than 75 percentile) and delicatessen (close to 75 percentile) but relatively small amount of other features. So I think the segement is for resturant or cafe.</p>
+<p>Answer: It seems like segment 0 have a high tendancy that will by a lot of milk,gorcery,frozen, detergents_paper (above than 75 percentile) but less fresh and delicatessen. So we could see that segnment 0 are more likely as a retailor (they don't need to sell much fresh and delcatessen).</p>
+<p>For segment 1, it has relatively more fresh (more than 75 percentile) and delicatessen (close to 75 percentile) but relatively small amount of other features. So I think the segement is for resturant/cafe or a small distributor.</p>
 
 </div>
 </div>
@@ -7836,7 +7836,7 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Answer: From this clustering result, it seems that sample point 0 and 1 are clustered into group of small cafe or small distrubutor. And simple point 2 is clustered into segment of a big retailor.</p>
+<p>Answer: From this clustering result, it seems that sample point 0 and 1 are clustered into group of resturant/cafe or small distrubutor. And simple point 2 is clustered into segment of a big retailor.</p>
 <p>This totally agrees with my intuitive guessing in question 1, which shows the model is quite reasonable.</p>
 
 </div>
@@ -7868,7 +7868,7 @@ Sample point 2 predicted to be in Cluster 0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Answer:
-Intuitively, I would want to only apply the 3-day per week schedule to Segment 0 customers (faimly user or small fast food resturant). With less fresh food on hand, and no major events with purchasing spikes like restaurants or hotels, they can probably sustain a less frequent delivery schedule more readily. Segment 1 are heavy customers I think they are they have to ride the waves of event planning which can quickly drain supplies of an in demand item for the evening (plus they'd probably rather be directing their staff to managing customers rather than tending to deliveries in the evening).</p>
+Intuitively, I would want to only apply the 3-day per week schedule to Segment 1 customers (small resturant). With less fresh food on hand, and no major events with purchasing spikes like restaurants or hotels, they can probably sustain a less frequent delivery schedule more readily. Segment 0 are heavy customers I think they are they have to ride the waves of event planning which can quickly drain supplies of an in demand item for the evening (plus they'd probably rather be directing their staff to managing customers rather than tending to deliveries in the evening).</p>
 <p>However, intuition may not always work. We could conduct useful A/B testing of both groups by selecting a small but statistically significant sample of customers from each cluster and using the remainder of their cluster as the control group. We could apply the new 3 day schedule to just the sample for each cluster, and measure how their reported service satsifaction changes with respect to their control groups. This would give us data on how the schedule change affects customers in these 2 seperate categories, which will reveal if the schedule is more helpful/damaging to one group or the other</p>
 
 </div>
@@ -8617,7 +8617,7 @@ RERERKTuKfAREREREZG69/8DOdvO6hQvtxcAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Answer: The number of clusters matches the number of channels, which means that it matches well. It is reasonable that sample point 1 is on the edge because in question 1, I also doubt it might be a small distributor or small retailor.</p>
+<p>Answer: The number of clusters matches the number of channels, which means that it matches well. For point 0, it could be purely classfied as "hotels/restaurants/cafes". For point 2 it could be purely classfied as 'retailers'. However, for point 1, it is on the edge. Somehow it could be small retailer but somehow it could be a larger resturant. It is reasonable that sample point 1 is on the edge because in question 1, I also doubt it might be a small distributor or small retailor. I would consider the classifications as consistent.</p>
 
 </div>
 </div>
